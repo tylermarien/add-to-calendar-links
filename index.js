@@ -6,6 +6,8 @@ var querystring = require('querystring');
 var icalendar = require('icalendar');
 var uuid = require('node-uuid');
 
+var normalizeEvent = require('./src/normalizeEvent');
+
 var GOOGLE_URL = 'http://www.google.com/calendar/event?';
 var OUTLOOK_URL = 'http://calendar.live.com/calendar/calendar.aspx?';
 var YAHOO_URL = 'http://calendar.yahoo.com/?';
@@ -53,12 +55,6 @@ function yahooParams(evt) {
         in_loc: evt.location,
         dur: moment.utc(evt.end.clone().diff(evt.start)).format('HHmm')
     };
-}
-
-function normalizeEvent(evt) {
-    evt.start = moment.tz(evt.start, evt.timezone).tz('UTC');
-    evt.end = moment.tz(evt.end, evt.timezone).tz('UTC');
-    return evt;
 }
 
 function dataUrl(data) {
