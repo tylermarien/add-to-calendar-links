@@ -78,5 +78,5 @@ module.exports = {
     google: _.compose(googleUrl, querystring.stringify, googleParams, normalizeEvent),
     outlook: _.compose(outlookUrl, querystring.stringify, outlookParams, normalizeEvent),
     yahoo: _.compose(yahooUrl, querystring.stringify, yahooParams, normalizeEvent),
-    ical: _.compose(dataUrl, createVEvent, normalizeEvent)
+    icalendar: _.compose(dataUrl, createVEvent, normalizeEvent)
 };
